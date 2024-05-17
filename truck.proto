@@ -1,0 +1,60 @@
+syntax = "proto3";
+package truck;
+// Définition du message truck
+message Truck {
+string id = 1;
+string marque= 2;
+string modele =3;
+string couleur= 4;
+string description =5;
+// Ajouter d'autres champs de données pour les films au besoin
+}
+// Définition des messages de requête et de réponse pour les méthodes d
+message GetTruckRequest {
+string truck_id = 1;
+}
+message GetTruckResponse {
+Truck truck = 1;
+}
+message SearchTrucksRequest {
+string query = 1;
+}
+message SearchTrucksResponse {
+repeated Truck trucks = 1;
+}
+message AddTruckRequest {
+    string marque= 1;
+    string modele =2;
+    string couleur= 3;
+    string description =4;
+}
+
+message AddTruckResponse {
+    Truck truck = 1;
+}
+message UpdateTruckRequest {
+    string id = 1;
+    string marque= 2;
+    string modele =3;
+    string couleur= 4;
+    string description =5;
+}
+
+message UpdateTruckResponse {
+    Truck truck = 1;
+}
+message DeleteTruckRequest {
+string id = 1;
+}
+message DeleteTruckResponse {
+ Truck trucks = 1;
+}
+// Définition du service de truck
+service TruckService {
+rpc GetTruck(GetTruckRequest) returns (GetTruckResponse);
+rpc SearchTrucks(SearchTrucksRequest) returns (SearchTrucksResponse);
+rpc AddTruck(AddTruckRequest) returns (AddTruckResponse);
+rpc UpdateTruck(UpdateTruckRequest)returns(UpdateTruckResponse);
+rpc DeleteTruck(DeleteTruckRequest)returns(DeleteTruckResponse);
+// Ajouter d'autres méthodes au besoin
+}
